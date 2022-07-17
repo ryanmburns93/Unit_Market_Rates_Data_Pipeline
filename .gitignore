@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Python module for loading proprietary data for use by main script
+proprietary_data_loader_utils.py
