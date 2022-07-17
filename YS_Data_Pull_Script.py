@@ -127,8 +127,8 @@ def send_data_to_sql_table(data_df, logger_name):
         runtime = end-start
         logger.debug(f'Successfully completed transfer of {len(data_df)} rows to {os.getenv("SQL_TABLE")} SQL table in {runtime}.')
         logger.debug(f'Program run complete for {datetime.today().strftime("%Y-%m-%d")}.')
-    except:
-        logger.debug(f'An unknown exception occurred while transfering third-party data to {os.getenv("SQL_TABLE")} SQL table.')
+    except Exception:
+        logger.debug(f'An unexpected exception occurred while transfering third-party data to {os.getenv("SQL_TABLE")} SQL table.')
         error_message = f"The Market Rate Data Pull for {datetime.today().strftime('%Y-%m-%d')} has failed.\n\nWhile no errors were found in collecting and processing the report data, the program was unable to append today's data into the SQL table {os.getenv('SQL_TABLE')}. This may be due to database downtime or other factors leading to the table being inaccessible. As a result, the data for {datetime.today().strftime('%Y-%m-%d')} will not be present in the {os.getenv('SQL_TABLE')} table.\n\nPlease reach out to Ryan Burns or a member of the RPA team for correction."
     return error_message
 
